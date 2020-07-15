@@ -1,0 +1,31 @@
+{
+    "name": "e-commerce",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "pstart": "pm2 start app.js --watch & pm2 logs",
+        "pstop": "pm2 stop app",
+        "start": "npx nodemon app.js",
+        "api": "npx nodemon api.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "bcryptjs": "^2.4.3",
+        "connect-mongodb-session": "^2.3.0",
+        "csurf": "^1.11.0",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "express-session": "^1.17.0",
+        "express-subdomain": "^1.0.5",
+        "express-validator": "^6.4.0",
+        "install": "^0.13.0",
+        "jsonwebtoken": "^8.5.1",
+        "mongodb": "^3.5.2",
+        "nodemailer": "^6.4.6",
+        "nodemon": "^2.0.3",
+        "vue": "^2.6.11"
+    }
+}
