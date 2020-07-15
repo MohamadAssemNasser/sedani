@@ -21,7 +21,7 @@ console.log('API IS RUNNING')
 app.use('/api', apiRoutes)
 
 mongoConnect(() => app.listen(port, function () {
-    console.log(`Example app listening on port !`)
+    console.log(`listening on port ${port}!`)
 }))
 
 // mongoConnect(() => app.listen(3001, '172.31.0.89'))
