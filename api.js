@@ -18,6 +18,6 @@ console.log('API IS RUNNING')
 
 app.use('/api', apiRoutes)
 
-mongoConnect(() => app.listen(80))
+mongoConnect(() => app.listen(3000))
 
 // mongoConnect(() => app.listen(3001, '172.31.0.89'))

@@ -6,18 +6,38 @@ const {
 const controller = require('../controllers/api');
 const router = express.Router();
 
-let registration = [
+const login = [
+    body('email')
+    .trim()
+    .isEmail()
+    .withMessage('Must be a valid email')
+    .notEmpty()
+    .withMessage('Email must not be empty')
+    .normalizeEmail(),
+    body('password', 'Invalid Password')
+    .trim()
+    .notEmpty()
+    .withMessage('Password must not be empty')
+    .isAlphanumeric()
+    .withMessage('Pasword must be alphanumeric')
+    .isLength({
+        min: 8
+    })
+    .withMessage('Pasword must be at least 8 in length')
+]
+
+const registration = [
     body('name')
     .trim()
     .notEmpty()
     .withMessage('Name must not be empty'),
     body('email')
     .trim()
-    .normalizeEmail()
     .isEmail()
     .withMessage('Must be a valid email')
     .notEmpty()
-    .withMessage('Email must not be empty'),
+    .withMessage('Email must not be empty')
+    .normalizeEmail(),
     body('password', 'Invalid Password')
     .trim()
     .notEmpty()
@@ -38,12 +58,7 @@ router.get('/', (req, res) => {
 
 router.post('/register', registration, controller.register)
 
-router.post('/login', [
-    body('email')
-    .trim(),
-    body('password', 'Invalid Password')
-    .trim()
-], controller.login)
+router.post('/login', login, controller.login)
 
 // router.post('/resetPassword', controller.resetPassword)
 

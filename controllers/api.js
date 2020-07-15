@@ -1,4 +1,3 @@
-const mongodb = require('mongodb')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const {
@@ -6,11 +5,7 @@ const {
 } = require('express-validator')
 
 const User = require('../models/user')
-const Trip = require('../models/trip')
-const Station = require('../models/station')
 const getDb = require('../util/database').getDb
-
-const ObjectId = mongodb.ObjectId
 
 let db
 
@@ -66,6 +61,16 @@ exports.register = async(req, res, next) => {
 
 exports.login = async(req, res, next) => {
     db = getDb()
+
+    const validationErrors = validationResult(req)
+
+    if (!validationErrors.isEmpty()) {
+        return res.json({
+            error: true,
+            validationErrors: validationErrors.errors
+        })
+    }
+
     try {
         let email = req.body.email
         let password = req.body.password
