@@ -52,7 +52,7 @@ const registration = [
 
 router.get('/', (req, res) => {
     res.status(200).json({
-        api: 'Sedani\'s API!'
+        api: 'Sidani\'s API!'
     })
 })
 
