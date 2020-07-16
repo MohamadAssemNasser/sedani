@@ -60,8 +60,6 @@ router.post('/register', registration, controller.register)
 
 router.post('/login', login, controller.login)
 
-// router.post('/resetPassword', controller.resetPassword)
-
 router.get('*', (req, res, next) => res.json({ error: 'Invalid Api Route' }))
 
 module.exports = router

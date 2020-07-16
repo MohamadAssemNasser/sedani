@@ -20,6 +20,10 @@ console.log('API IS RUNNING')
 
 app.use('/api', apiRoutes)
 
+app.get('/', (req, res) => {
+    return res.redirect('/api')
+})
+
 mongoConnect(() => app.listen(port, function () {
     console.log(`listening on port ${port}!`)
 }))
